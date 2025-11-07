@@ -17,13 +17,11 @@
   .examples{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
   .example-item{ background:#fff; border:1px solid #eef4ff; padding:10px; border-radius:8px; font-size:15px; }
   .quiz{ margin-top:6px; }
-  .q{ border-bottom:1px dashed #eef2f8; padding:14px 8px; display:grid; grid-template-columns: 1fr 170px; gap:12px; align-items:start; }
+  .q{ border-bottom:1px dashed #eef2f8; padding:14px 8px; display:grid; grid-template-columns: 1fr 220px; gap:12px; align-items:start; }
   .q:last-child{ border-bottom:0; }
   .direct{ font-weight:700; margin-bottom:8px; }
   .hint{ color:var(--muted); font-size:13px; margin-bottom:8px; }
   input[type="text"]{ width:100%; padding:8px 10px; font-size:15px; border:1px solid #d7e7ff; border-radius:8px; box-sizing:border-box; }
-  button{ background:var(--accent); color:white; border:0; padding:9px 12px; border-radius:8px; cursor:pointer; font-weight:600; }
-  button.secondary{ background:#fff; color:var(--accent); border:1px solid var(--accent); box-shadow:none; }
   .feedback{ margin-top:8px; font-size:14px; }
   .ok{ background:var(--good); padding:8px; border-radius:8px; border:1px solid #bfe9c6; color:#0b6b2e; font-weight:700; }
   .no{ background:var(--bad); padding:8px; border-radius:8px; border:1px solid #ffb6b6; color:#9d1b1b; font-weight:700; }
@@ -31,12 +29,14 @@
   code{ background:#f3f7ff; padding:4px 6px; border-radius:4px; font-size:13px; }
   footer{ margin-top:18px; color:var(--muted); font-size:13px; }
   @media (max-width:820px){ .examples{ grid-template-columns:1fr; } .q{ grid-template-columns:1fr; } }
+  .field-ok{ background: #e9fbef; border:1px solid #bfe9c6; }
+  .field-bad{ background: #fff6f6; border:1px solid #ffb6b6; }
 </style>
 </head>
 <body>
   <div class="wrap">
     <h1>Reported speech — explanation, examples and quiz</h1>
-    <p class="lead">Read the short guide below, study the examples, then convert the direct speech sentences into reported speech in the quiz. Click "Check" for each question to see immediate feedback. Flexible answers are accepted where the key grammar is correct.</p>
+    <p class="lead">Read the guide and examples, then convert the direct speech sentences into reported speech in the quiz. Answers are checked automatically when you leave a field, press Enter, or pause typing.</p>
 
     <section class="card">
       <h2>When do we use reported speech?</h2>
@@ -44,20 +44,19 @@
 
       <h2>How to create reported speech (key points)</h2>
       <ul>
-        <li>Change the reporting verb and remove quotation marks. Common reporting verbs: <code>say / tell / ask</code>. Example: <em>He said</em>, <em>She told me</em>, <em>They asked</em>.</li>
-        <li>Backshift the tense when the reporting verb is in the past (common backshifts shown below).</li>
+        <li>Change the reporting verb and remove quotation marks. Common reporting verbs: <code>say / tell / ask</code>.</li>
+        <li>Backshift the tense when the reporting verb is in the past (see common backshifts below).</li>
         <li>Change pronouns and time/place words when necessary (I → he/she, today → that day, here → there).</li>
-        <li>Use <code>that</code> optionally after verbs like <code>say/tell</code> (British English often omits it). For reported questions use <code>ask + if/whether</code> or <code>ask + wh-word</code>.</li>
+        <li>Use <code>that</code> optionally after verbs like <code>say/tell</code>. For reported questions use <code>ask + if/whether</code> or <code>ask + wh-word</code>.</li>
       </ul>
 
       <h2>Common backshifts</h2>
       <ul>
-        <li>Present simple → Past simple: <code>I am happy</code> → <code>she said (that) she was happy</code></li>
-        <li>Present continuous → Past continuous: <code>I'm eating</code> → <code>he said (that) he was eating</code></li>
-        <li>Present perfect → Past perfect: <code>I have finished</code> → <code>she said (that) she had finished</code></li>
-        <li>Past simple → Past perfect (when reporting a past-in-the-past): <code>I arrived</code> → <code>he said (that) he had arrived</code></li>
-        <li>Will → Would: <code>I will go</code> → <code>she said (that) she would go</code></li>
-        <li>Can → Could, May → Might, Must → Had to (often)</li>
+        <li>Present simple → Past simple (I am → she was)</li>
+        <li>Present continuous → Past continuous (I'm eating → he was eating)</li>
+        <li>Present perfect → Past perfect (I have finished → she had finished)</li>
+        <li>Will → Would (I will go → she would go)</li>
+        <li>Can → Could; May → Might; Must → Had to (often)</li>
       </ul>
     </section>
 
@@ -79,21 +78,20 @@
 
     <section class="card">
       <h2>Quiz — convert direct speech to reported speech</h2>
-      <p class="hint">For each direct sentence, type a grammatically correct reported version. You may include or omit <code>that</code>. Press "Check" to get immediate feedback. The checker accepts common, correct variations and shows alternatives when appropriate.</p>
+      <p class="hint">Type a grammatically correct reported version in the box. The checker accepts common variations and shows alternative suggested answers where appropriate.</p>
 
       <div class="quiz" id="quiz"></div>
     </section>
 
-    <footer>Created for British English practice. Answers are flexible but checked for the correct reporting verb, tense change (backshift where expected), pronoun/time changes, and correct structure for questions.</footer>
+    <footer>Created for British English practice. Answers are flexible but checked for correct reporting verb, appropriate tense/backshift, pronoun/time changes, and question structure.</footer>
   </div>
 
 <script>
-  // Quiz items: each has direct text and an array of accepted regex patterns and canonical alternatives.
-  // Patterns are case-insensitive and tolerant of optional "that" and small variations.
+  // Quiz items with direct sentences, hints, accepted patterns and suggested alternatives
   const quizItems = [
     {
       direct: '"I am tired," she said.',
-      hints: 'Report tense to past simple; change pronoun.',
+      hints: 'Present simple → past simple; change pronoun.',
       accepts: [/^she (said|told( me|him|her|us|them)?) (that )?she was tired\.?$/i],
       alts: ['She said (that) she was tired.']
     },
@@ -106,27 +104,27 @@
     {
       direct: '"I will call you tomorrow," Maria said.',
       hints: 'Will → would; tomorrow → the next day.',
-      accepts: [/^maria (said|told( me|him|her|us|them)?) (that )?she would call (me|him|her|us|them) (the )?next day\.?$/i,
-                /^maria (said|told( me|him|her|us|them)?) (that )?she would call (me|him|her|us|them) tomorrow\.?$/i],
-      alts: ['Maria said (that) she would call me the next day.', 'Maria said (that) she would call you the next day.']
+      accepts: [/^maria (said|told( me|him|her|us|them)?) (that )?she would call (me|you|him|her|us|them) (the )?next day\.?$/i,
+                /^maria (said|told( me|him|her|us|them)?) (that )?she would call (me|you|him|her|us|them) tomorrow\.?$/i],
+      alts: ['Maria said (that) she would call me the next day.']
     },
     {
       direct: '"Don\'t make noise," the teacher said to the class.',
-      hints: 'Imperative → told + to-infinitive with not.',
+      hints: 'Imperative → told + not to-infinitive.',
       accepts: [/^the teacher told the class not to make noise\.?$/i,
                 /^the teacher (said|told) to the class not to make noise\.?$/i],
       alts: ['The teacher told the class not to make noise.']
     },
     {
       direct: '"Where do you live?" he asked me.',
-      hints: 'Wh-question → ask + wh-clause; change pronoun and tense.',
+      hints: 'Wh-question → ask + wh-clause with backshift.',
       accepts: [/^he asked me where i lived\.?$/i,
-                /^he asked me where (i|you) lived\.?$/i],
+                /^he asked me where you lived\.?$/i],
       alts: ['He asked me where I lived.']
     },
     {
       direct: '"Have you finished?" she asked.',
-      hints: 'Yes/no question → asked if/whether + clause (present perfect → past perfect).',
+      hints: 'Yes/no question → asked if/whether + past perfect.',
       accepts: [/^she asked if i had finished\.?$/i,
                 /^she asked whether i had finished\.?$/i],
       alts: ['She asked if I had finished.']
@@ -139,14 +137,14 @@
     },
     {
       direct: '"I can\'t come," John said.',
-      hints: 'Can → could in reported speech (often).',
+      hints: 'Can → could.',
       accepts: [/^john (said|told( me|him|her|us|them)?) (that )?he couldn\'t come\.?$/i,
                 /^john (said|told( me|him|her|us|them)?) (that )?he could not come\.?$/i],
       alts: ['John said (that) he couldn\'t come.']
     },
     {
       direct: '"We ate already," they said.',
-      hints: 'Present/past perfect contrast: "already" + present perfect → past perfect in reported speech.',
+      hints: 'Already + present/past perfect; reported → past perfect.',
       accepts: [/^they (said|told( me|him|her|us|them)?) (that )?they had already eaten\.?$/i],
       alts: ['They said (that) they had already eaten.']
     },
@@ -159,28 +157,28 @@
     },
     {
       direct: '"I went to Paris last year," Anna said.',
-      hints: 'Past simple may stay past simple or become past perfect depending on context; both are often acceptable as reported speech if reporting verb is past.',
+      hints: 'Past simple may remain or become past perfect depending on context.',
       accepts: [/^anna (said|told( me|him|her|us|them)?) (that )?she went to paris last year\.?$/i,
                 /^anna (said|told( me|him|her|us|them)?) (that )?she had gone to paris last year\.?$/i],
       alts: ['Anna said (that) she went to Paris last year.', 'Anna said (that) she had gone to Paris the year before.']
     },
     {
       direct: '"I have never been to London," he said.',
-      hints: 'Present perfect → past perfect in reported speech.',
+      hints: 'Present perfect → past perfect.',
       accepts: [/^he (said|told( me|him|her|us|them)?) (that )?he had never been to london\.?$/i],
       alts: ['He said (that) he had never been to London.']
     },
     {
       direct: '"Do you like coffee?" she asked him.',
-      hints: 'Yes/no question → asked if/whether; pronoun & tense changes may vary with context.',
+      hints: 'Yes/no question → asked if/whether; change tense if necessary.',
       accepts: [/^she asked him if he liked coffee\.?$/i,
                 /^she asked him whether he liked coffee\.?$/i],
       alts: ['She asked him if he liked coffee.']
     },
     {
       direct: '"I will help you," he promised.',
-      hints: 'Will → would; reporting verbs like promised can be used without that.',
-      accepts: [/^he promised \(that \)?he would help (me|you|her|us|them)\.?$/i,
+      hints: 'Will → would; reporting verb may be promised.',
+      accepts: [/^he promised( that)? he would help( me|you|him|her|us|them)?\.?$/i,
                 /^he promised he would help\.?$/i],
       alts: ['He promised he would help me.']
     },
@@ -188,12 +186,11 @@
       direct: '"Where have you been?" they asked.',
       hints: 'Present perfect question → asked where + past perfect.',
       accepts: [/^they asked where i had been\.?$/i,
-                /^they asked where (i|you) had been\.?$/i],
+                /^they asked where you had been\.?$/i],
       alts: ['They asked where I had been.']
     }
   ];
 
-  // Helper: normalise whitespace and punctuation for display
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   const quizDiv = document.getElementById('quiz');
@@ -211,63 +208,64 @@
 
     const right = document.createElement('div');
     right.style.textAlign = 'right';
-    right.innerHTML = '<div><button id="check-'+i+'">Check</button> <button class="secondary" id="show-'+i+'">Show answer</button></div>'
-                    + '<div class="alt" id="alt-'+i+'"></div>';
+    right.innerHTML = '<div class="alt" id="alt-'+i+'"></div>';
 
     q.appendChild(left);
     q.appendChild(right);
     quizDiv.appendChild(q);
 
-    // Event handlers
-    document.getElementById('check-'+i).addEventListener('click', ()=> evaluate(i));
-    document.getElementById('show-'+i).addEventListener('click', ()=> reveal(i));
-    // Also allow Enter on input
-    document.getElementById('input-'+i).addEventListener('keydown', (e)=>{ if (e.key==='Enter'){ e.preventDefault(); evaluate(i); } });
+    // Automatic checking: debounce on input, and check on blur/Enter
+    const inputEl = document.getElementById('input-'+i);
+    let timer = null;
+    inputEl.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(()=> evaluate(i), 700);
+    });
+    inputEl.addEventListener('blur', () => evaluate(i));
+    inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter'){ e.preventDefault(); evaluate(i); } });
   });
 
-  // Evaluate answer for question i
   function evaluate(i){
-    const user = document.getElementById('input-'+i).value.trim();
+    const userEl = document.getElementById('input-'+i);
+    const user = userEl.value.trim();
     const fb = document.getElementById('fb-'+i);
     const altDiv = document.getElementById('alt-'+i);
     fb.innerHTML = ''; altDiv.innerHTML = '';
+    userEl.classList.remove('field-ok','field-bad');
+
     if (!user){
       fb.innerHTML = '<div class="no">No answer entered.</div>';
+      userEl.classList.add('field-bad');
       return;
     }
+
     const patterns = quizItems[i].accepts;
     let ok = false;
     for (const p of patterns){
       try {
-        if (p.test(user.trim())){
+        if (p.test(user)){
           ok = true; break;
         }
       } catch(e){}
     }
+
     if (ok){
       fb.innerHTML = '<div class="ok">Correct — good reported speech.</div>';
-      // show alternate/canonical forms (helpful but not required)
+      userEl.classList.add('field-ok');
       if (quizItems[i].alts && quizItems[i].alts.length){
         altDiv.innerHTML = '<div style="font-size:13px;color:#0b2545;"><strong>Possible form(s):</strong><br>' + quizItems[i].alts.map(a => '<code>'+esc(a)+'</code>').join('<br>') + '</div>';
       }
     } else {
       fb.innerHTML = '<div class="no">Incorrect or incomplete.</div>';
-      // show canonical answers
+      userEl.classList.add('field-bad');
       if (quizItems[i].alts && quizItems[i].alts.length){
         altDiv.innerHTML = '<div style="font-size:13px;color:#0b2545;"><strong>Suggested answer(s):</strong><br>' + quizItems[i].alts.map(a => '<code>'+esc(a)+'</code>').join('<br>') + '</div>';
       }
     }
   }
 
-  // Reveal canonical answers (fills input with first alternative)
-  function reveal(i){
-    const alt = quizItems[i].alts && quizItems[i].alts.length ? quizItems[i].alts[0] : '';
-    document.getElementById('input-'+i).value = alt;
-    evaluate(i);
-  }
-
-  // Small accessibility: focus first input on load
-  window.addEventListener('load', ()=>{ const el = document.getElementById('input-0'); if (el){ el.focus(); } });
+  // Focus first input on load
+  window.addEventListener('load', ()=>{ const el = document.getElementById('input-0'); if (el) el.focus(); });
 </script>
 </body>
 </html>
